@@ -8,6 +8,6 @@ class AllUsers {
   final String course4;
   final String course5;
 
-  AllUsers({ this.name, this.program, this.course1, this.course2,
-              this.course3, this.course4, this.course5 });
+  AllUsers({ this.name = "", this.program = "", this.course1 = "", this.course2 = "",
+              this.course3 = "", this.course4 = "", this.course5 = ""});
 }

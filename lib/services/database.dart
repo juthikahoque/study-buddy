@@ -6,12 +6,12 @@ class DatabaseService {
   final String uid;
   DatabaseService({ this.uid });
   // collection reference
-  final CollectionReference userCollection = Firestore.instance.collection('users');
+  final CollectionReference userCollection = FirebaseFirestore.instance.collection('users');
 
   Future updateUserData(String name, String program, String course1,
                         String course2, String course3, String course4,
                         String course5) async {
-    return await userCollection.document(uid).setData({
+    return await userCollection.doc(uid).set({
       'name': name,
       'program': program,
       'course1': course1,
@@ -24,15 +24,15 @@ class DatabaseService {
 
   // user listt from snapshot
   List <AllUsers> _userListFromSnapshot(QuerySnapshot snapshot) {
-    return snapshot.documents.map((doc) {
+    return snapshot.docs.map((doc) {
       return AllUsers(
-        name: doc.data['name'] ?? '',
-        program: doc.data['program'] ?? '',
-        course1: doc.data['course1'] ?? '',
-        course2: doc.data['course2'] ?? '',
-        course3: doc.data['course3'] ?? '',
-        course4: doc.data['course4'] ?? '',
-        course5: doc.data['course5'] ?? ''
+        name: doc['name'] ?? '',
+        program: doc['program'] ?? '',
+        course1: doc['course1'] ?? '',
+        course2: doc['course2'] ?? '',
+        course3: doc['course3'] ?? '',
+        course4: doc['course4'] ?? '',
+        course5: doc['course5'] ?? ''
       );
     }).toList();
   }

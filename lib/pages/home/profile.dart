@@ -32,25 +32,23 @@ class _ProfileState extends State<Profile> {
           backgroundColor: Colors.transparent,
           elevation: 0.0,
           actions: <Widget> [
-            FlatButton.icon(
-                textColor: Colors.cyan[700],
-                icon: Icon(Icons.logout),
-                label: Text('logout'),
-                onPressed: () async {
-                  await _auth.signOut();
-                }
+            IconButton(
+              color: Colors.cyan[700],
+              icon: Icon(Icons.logout),
+              onPressed: () async {
+                await _auth.signOut();
+              },
             ),
-            FlatButton.icon(
-                textColor: Colors.cyan[700],
-                icon: Icon(Icons.settings),
-                label: Text('settings'),
-                onPressed: () => _showSettingsPanel(),
+            IconButton(
+              icon: Icon(Icons.settings),
+              onPressed: () => _showSettingsPanel(),
+              color: Colors.cyan[700]
             ),
           ],
         ),
         body: Container(
           padding: EdgeInsets.symmetric(vertical: 20.0, horizontal: 60.0),
-          child: SettingsForm()
+          child: Text('profile')
         )
       ),
     );
